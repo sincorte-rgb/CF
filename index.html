@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CF Cell - Servicio Técnico & Ventas Especializadas</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Inter & Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@600;700;800;900&display=swap" rel="stylesheet">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            heading: ['Outfit', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#fdf2f8',
+              100: '#fce7f3',
+              400: '#f472b6',
+              500: '#ec4899',
+              600: '#db2777',
+              700: '#be185d',
+              accent: '#e11d48',
+              accentHover: '#be123c',
+              dark: '#07070a',
+              card: '#0f0f16'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-[#07070a] text-slate-100 min-h-screen font-sans selection:bg-pink-500 selection:text-white">
+
+  <!-- TOP BAR INFO -->
+  <div class="bg-black border-b border-pink-950/40 text-xs text-slate-400 py-2 px-4">
+    <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
+      <div class="flex items-center space-x-4">
+        <span><i class="fa-solid fa-screwdriver-wrench text-pink-400 mr-1.5"></i> Laboratorio de Reparaciones & Mayorista</span>
+        <span class="hidden md:inline text-pink-950">•</span>
+        <span class="hidden md:inline"><i class="fa-solid fa-shield-halved text-pink-400 mr-1.5"></i> Garantía escrita en servicios</span>
+      </div>
+      <div class="flex items-center space-x-4 ml-auto">
+        <span id="top-address"><i class="fa-solid fa-location-dot text-pink-400 mr-1"></i> Lopez de Vega c/ Carlos M. Gimenez</span>
+        <button onclick="openAdminModal()" class="text-xs text-slate-400 hover:text-pink-400 transition flex items-center gap-1 bg-[#14101a] hover:bg-[#1d1627] px-2 py-0.5 rounded border border-pink-900/40">
+          <i class="fa-solid fa-sliders text-pink-400"></i> Panel Admin
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- NAVBAR -->
+  <header class="sticky top-0 z-40 bg-[#07070a]/90 backdrop-blur-md border-b border-pink-950/40 transition-all">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- LOGO CON ESTRUCTURA ORIGINAL Y COLOR PINK -->
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-12 h-12 rounded-xl bg-gradient-to-tr from-pink-500 to-rose-600 flex items-center justify-center shadow-lg shadow-pink-500/25 group-hover:scale-105 transition duration-300">
+          <i class="fa-solid fa-microchip text-2xl text-white"></i>
+        </div>
+        <div>
+          <span class="font-heading font-extrabold text-2xl tracking-tight text-white flex items-center gap-1">
+            CF <span class="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-rose-500">CELL</span>
+          </span>
+          <p class="text-[10px] text-pink-400 font-semibold tracking-wider uppercase">Servicio Técnico & Ventas</p>
+        </div>
+      </a>
+
+      <!-- DESKTOP NAV -->
+      <nav class="hidden md:flex items-center space-x-6 font-medium text-sm text-slate-300">
+        <a href="#inicio" class="hover:text-pink-400 transition">Inicio</a>
+        <a href="#cotizador" class="hover:text-pink-400 text-pink-400 font-bold transition flex items-center gap-1"><i class="fa-solid fa-calculator text-xs"></i> Cotizador</a>
+        <a href="#trabajos" class="hover:text-pink-400 transition flex items-center gap-1"><i class="fa-solid fa-arrows-left-right text-xs text-pink-500"></i> Antes & Después</a>
+        <a href="#servicios" class="hover:text-pink-400 transition">Servicios</a>
+        <a href="#catalogo" class="hover:text-pink-400 transition">Catálogo</a>
+        <a href="#mayoristas" class="hover:text-cyan-400 transition text-amber-400 font-semibold"><i class="fa-solid fa-boxes-stacked mr-1"></i>Mayoristas</a>
+        <a href="#ubicacion" class="hover:text-pink-400 transition"><i class="fa-solid fa-map-location-dot mr-1"></i>Ubicación</a>
+        <a href="#contacto" class="hover:text-pink-400 transition">Contacto</a>
+      </nav>
+
+      <!-- CTA BUTTON -->
+      <div class="hidden sm:flex items-center gap-3">
+        <a id="btn-header-whatsapp" href="https://wa.me/595983236508" target="_blank" class="flex items-center gap-2 bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white text-sm font-semibold px-4 py-2.5 rounded-xl shadow-lg shadow-emerald-500/20 transition transform hover:-translate-y-0.5">
+          <i class="fa-brands fa-whatsapp text-lg"></i>
+          <span>WhatsApp 0983 236 508</span>
+        </a>
+      </div>
+
+      <!-- MOBILE MENU TOGGLE -->
+      <button onclick="toggleMobileMenu()" class="md:hidden text-slate-300 hover:text-white p-2">
+        <i class="fa-solid fa-bars text-xl"></i>
+      </button>
+    </div>
+
+    <!-- MOBILE MENU DROPDOWN -->
+    <div id="mobile-menu" class="hidden md:hidden bg-[#0d0d14] border-b border-pink-950/60 px-6 py-4 space-y-3 font-medium text-sm">
+      <a href="#inicio" onclick="toggleMobileMenu()" class="block py-1 text-slate-200 hover:text-pink-400">Inicio</a>
+      <a href="#cotizador" onclick="toggleMobileMenu()" class="block py-1 text-pink-400 font-bold flex items-center gap-1.5"><i class="fa-solid fa-calculator text-xs"></i> Cotizador de Pantallas</a>
+      <a href="#trabajos" onclick="toggleMobileMenu()" class="block py-1 text-slate-200 hover:text-pink-400 flex items-center gap-1.5"><i class="fa-solid fa-arrows-left-right text-xs text-pink-500"></i> Antes y Después</a>
+      <a href="#servicios" onclick="toggleMobileMenu()" class="block py-1 text-slate-200 hover:text-pink-400">Servicio Técnico</a>
+      <a href="#catalogo" onclick="toggleMobileMenu()" class="block py-1 text-slate-200 hover:text-pink-400">Catálogo Productos</a>
+      <a href="#mayoristas" onclick="toggleMobileMenu()" class="block py-1 text-amber-400 font-semibold">Ventas Mayoristas</a>
+      <a href="#ubicacion" onclick="toggleMobileMenu()" class="block py-1 text-slate-200 hover:text-pink-400">Ubicación & Mapa</a>
+      <a href="#contacto" onclick="toggleMobileMenu()" class="block py-1 text-slate-200 hover:text-pink-400">Contacto</a>
+      <a href="https://wa.me/595983236508" target="_blank" class="block py-2 text-emerald-400 font-bold">
+        <i class="fa-brands fa-whatsapp mr-1"></i> WhatsApp: 0983 236 508
+      </a>
+      <button onclick="toggleMobileMenu(); openAdminModal()" class="w-full text-left py-2 text-pink-400 border-t border-pink-950 flex items-center gap-2">
+        <i class="fa-solid fa-sliders"></i> Panel Administrador del Catálogo
+      </button>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section id="inicio" class="relative pt-12 pb-20 md:pt-20 md:pb-32 overflow-hidden">
+    <!-- Ambient Pink Glows -->
+    <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-pink-500/12 blur-[120px] rounded-full pointer-events-none"></div>
+    <div class="absolute top-1/3 right-10 w-[300px] h-[300px] bg-rose-600/10 blur-[100px] rounded-full pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Left Hero Content -->
+        <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+          <div class="inline-flex items-center gap-2 bg-[#17101a] border border-pink-900/40 px-3.5 py-1.5 rounded-full text-xs font-medium text-pink-300 shadow-inner">
+            <span class="flex h-2 w-2 rounded-full bg-pink-500 animate-pulse"></span>
+            Laboratorio Especializado multimarca
+          </div>
+
+          <h1 class="font-heading text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight">
+            Reparación express y repuestos de alta calidad en <span class="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-rose-300 to-pink-500">CF CELL</span>
+          </h1>
+
+          <p class="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 font-light leading-relaxed">
+            Soluciones integrales para <strong class="text-white font-medium">Celulares, Notebooks, Televisores, Cámaras CCTV e Informática</strong>. Atendemos a clientes particulares y ofrecemos precios especiales para el <strong class="text-pink-400 font-medium">gremio y mayoristas</strong>.
+          </p>
+
+          <!-- Action buttons -->
+          <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-2">
+            <a href="#catalogo" class="flex items-center justify-center gap-2 bg-gradient-to-r from-pink-500 to-rose-600 hover:from-pink-600 hover:to-rose-700 text-white font-semibold px-6 py-3.5 rounded-xl shadow-lg shadow-pink-500/25 transition transform hover:-translate-y-0.5">
+              <i class="fa-solid fa-store"></i> Explorar Catálogo
+            </a>
+            <a id="btn-hero-quote" href="https://wa.me/595983236508" target="_blank" class="flex items-center justify-center gap-2 bg-[#14111c] hover:bg-[#1f1a2b] text-slate-200 border border-pink-900/40 hover:border-pink-500 font-semibold px-6 py-3.5 rounded-xl transition">
+              <i class="fa-brands fa-whatsapp text-emerald-400 text-lg"></i> WhatsApp: 0983 236 508
+            </a>
+          </div>
+
+          <!-- Feature badges -->
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-6 border-t border-pink-950/40 text-left">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-lg bg-pink-500/10 border border-pink-500/20 flex items-center justify-center text-pink-400 flex-shrink-0">
+                <i class="fa-solid fa-clock-rotate-left text-lg"></i>
+              </div>
+              <div>
+                <p class="text-xs text-slate-400">Reparaciones</p>
+                <p class="text-sm font-semibold text-white">Rápidas y Seguras</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-lg bg-pink-500/10 border border-pink-500/20 flex items-center justify-center text-pink-400 flex-shrink-0">
+                <i class="fa-solid fa-award text-lg"></i>
+              </div>
+              <div>
+                <p class="text-xs text-slate-400">Repuestos</p>
+                <p class="text-sm font-semibold text-white">Con Garantía</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 col-span-2 sm:col-span-1">
+              <div class="w-10 h-10 rounded-lg bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 flex-shrink-0">
+                <i class="fa-solid fa-handshake text-lg"></i>
+              </div>
+              <div>
+                <p class="text-xs text-slate-400">Canal Gremio</p>
+                <p class="text-sm font-semibold text-white">Precios Mayoristas</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Hero: Mini Sección de Consulta y Pedidos Directos -->
+        <div class="lg:col-span-5">
+          <div class="relative bg-gradient-to-b from-[#13111c] to-[#0a0812] border border-pink-900/50 hover:border-pink-500/50 rounded-3xl p-6 sm:p-7 shadow-2xl backdrop-blur-xl transition duration-300">
+            
+            <!-- Header del Mini Formulario -->
+            <div class="flex items-center justify-between pb-3.5 border-b border-pink-950/60 mb-4">
+              <div class="flex items-center gap-2.5">
+                <div class="w-8 h-8 rounded-lg bg-pink-500/10 text-pink-400 flex items-center justify-center text-sm border border-pink-500/30">
+                  <i class="fa-solid fa-bolt"></i>
+                </div>
+                <div>
+                  <h3 class="font-heading font-bold text-white text-base leading-tight">Enviar consulta directa</h3>
+                  <p class="text-[11px] text-slate-400">Atención rápida al <strong class="text-white">0983 236 508</strong></p>
+                </div>
+              </div>
+              <span class="inline-flex items-center gap-1.5 text-[10px] bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 px-2.5 py-1 rounded-full font-bold">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> En línea
+              </span>
+            </div>
+
+            <p class="text-xs text-slate-300 mb-3">
+              Completa los datos y se abrirá tu WhatsApp con el mensaje estructurado para nuestro número <strong class="text-pink-400">0983 236 508</strong>:
+            </p>
+
+            <!-- Atajos rápidos para elegir tipo con un clic -->
+            <div class="flex flex-wrap gap-1.5 mb-3.5">
+              <button type="button" onclick="setHeroQuery('Reparación / Servicio Técnico', 'Celular ')" class="text-[10px] font-semibold px-2.5 py-1 rounded-lg bg-[#181322] hover:bg-pink-600 hover:text-white text-slate-300 border border-pink-950/80 transition">📱 Celular</button>
+              <button type="button" onclick="setHeroQuery('Cargadores Notebook', 'Cargador Notebook ')" class="text-[10px] font-semibold px-2.5 py-1 rounded-lg bg-[#181322] hover:bg-pink-600 hover:text-white text-slate-300 border border-pink-950/80 transition">💻 Notebook</button>
+              <button type="button" onclick="setHeroQuery('Reparación / Servicio Técnico', 'Smart TV ')" class="text-[10px] font-semibold px-2.5 py-1 rounded-lg bg-[#181322] hover:bg-pink-600 hover:text-white text-slate-300 border border-pink-950/80 transition">📺 TV</button>
+              <button type="button" onclick="setHeroQuery('Instalación CCTV', 'CCTV Cámaras ')" class="text-[10px] font-semibold px-2.5 py-1 rounded-lg bg-[#181322] hover:bg-pink-600 hover:text-white text-slate-300 border border-pink-950/80 transition">📹 CCTV</button>
+              <button type="button" onclick="setHeroQuery('Consulta Mayorista', 'Lista Mayorista ')" class="text-[10px] font-semibold px-2.5 py-1 rounded-lg bg-[#181322] hover:bg-amber-600 hover:text-white text-amber-300 border border-amber-500/30 transition">👑 Mayorista</button>
+            </div>
+
+            <!-- Mini Formulario -->
+            <form onsubmit="handleHeroContactForm(event)" class="space-y-3">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div>
+                  <label class="block text-[11px] font-semibold text-slate-300 mb-1">Tu Nombre</label>
+                  <input type="text" id="hero-name" required placeholder="Ej: César" class="w-full bg-black/90 border border-pink-950/80 rounded-xl px-3 py-2 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-pink-500">
+                </div>
+                <div>
+                  <label class="block text-[11px] font-semibold text-slate-300 mb-1">Tipo de Consulta</label>
+                  <select id="hero-type" class="w-full bg-black/90 border border-pink-950/80 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-pink-500">
+                    <option value="Reparación / Servicio Técnico">Reparación / Servicio Técnico</option>
+                    <option value="Cargadores Notebook">Cargadores de Notebooks</option>
+                    <option value="Compra Minorista">Compra de Repuesto o Producto</option>
+                    <option value="Consulta Mayorista">Lista de Precios Mayorista</option>
+                    <option value="Instalación CCTV">Presupuesto CCTV / Seguridad</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-[11px] font-semibold text-slate-300 mb-1">Equipo / Modelo / Producto</label>
+                <input type="text" id="hero-model" required placeholder="Ej: Notebook Dell / Celular Samsung A52 / Smart TV LG" class="w-full bg-black/90 border border-pink-950/80 rounded-xl px-3 py-2 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-pink-500">
+              </div>
+
+              <div>
+                <label class="block text-[11px] font-semibold text-slate-300 mb-1">Detalle de la falla o lo que buscas</label>
+                <textarea id="hero-message" rows="2" required placeholder="Ej: No enciende la pantalla / Busco cargador de 65W original / Cotización de 4 cámaras..." class="w-full bg-black/90 border border-pink-950/80 rounded-xl px-3 py-2 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-pink-500"></textarea>
+              </div>
+
+              <button type="submit" class="w-full py-3 px-4 bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-bold rounded-xl text-xs sm:text-sm flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/20 transition transform hover:-translate-y-0.5">
+                <i class="fa-brands fa-whatsapp text-lg"></i>
+                <span>Enviar consulta al 0983 236 508</span>
+              </button>
+            </form>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- SECCIÓN: COTIZADOR RÁPIDO DE PANTALLAS Y REPARACIONES -->
+  <!-- ========================================== -->
+  <section id="cotizador" class="py-16 relative bg-[#0a0712] border-t border-b border-pink-950/50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-2xl mx-auto mb-10">
+        <div class="inline-flex items-center gap-2 bg-pink-500/10 border border-pink-500/30 px-3 py-1 rounded-full text-xs font-bold text-pink-400 mb-2 shadow-inner">
+          <i class="fa-solid fa-calculator"></i> Cotizador Online en Tiempo Real
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-heading font-extrabold text-white">Cotizador Rápido de Pantallas</h2>
+        <p class="text-slate-400 text-sm mt-2">
+          Elige la marca, modelo y la falla de tu equipo para conocer el costo estimado y consultar disponibilidad de repuesto por WhatsApp al instante.
+        </p>
+      </div>
+
+      <!-- Card Principal del Cotizador -->
+      <div class="bg-gradient-to-b from-[#130f1c] to-[#0a0812] border border-pink-900/50 hover:border-pink-500/40 rounded-3xl p-6 sm:p-10 shadow-2xl relative overflow-hidden">
+        
+        <!-- Glow ambiental -->
+        <div class="absolute -top-16 -right-16 w-56 h-56 bg-pink-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          
+          <!-- Lado Izquierdo: Selectores Interactivos -->
+          <div class="lg:col-span-7 space-y-5">
+            
+            <!-- Paso 1: Marca -->
+            <div>
+              <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">
+                1. Elige la Marca de tu Celular:
+              </label>
+              <div class="grid grid-cols-2 sm:grid-cols-5 gap-2" id="brand-selector">
+                <button type="button" onclick="selectBrand('Samsung')" id="brand-btn-Samsung" class="brand-opt p-3 rounded-2xl bg-[#1c1427] border-2 border-pink-500 text-white font-bold text-xs flex flex-col items-center gap-1.5 transition shadow-lg shadow-pink-500/20">
+                  <span class="text-xl">📱</span>
+                  <span>Samsung</span>
+                </button>
+                <button type="button" onclick="selectBrand('iPhone')" id="brand-btn-iPhone" class="brand-opt p-3 rounded-2xl bg-[#140f1e] border-2 border-pink-950/60 hover:border-pink-500/40 text-slate-300 font-bold text-xs flex flex-col items-center gap-1.5 transition">
+                  <span class="text-xl">🍏</span>
+                  <span>iPhone</span>
+                </button>
+                <button type="button" onclick="selectBrand('Xiaomi')" id="brand-btn-Xiaomi" class="brand-opt p-3 rounded-2xl bg-[#140f1e] border-2 border-pink-950/60 hover:border-pink-500/40 text-slate-300 font-bold text-xs flex flex-col items-center gap-1.5 transition">
+                  <span class="text-xl">⚡</span>
+                  <span>Xiaomi</span>
+                </button>
+                <button type="button" onclick="selectBrand('Motorola')" id="brand-btn-Motorola" class="brand-opt p-3 rounded-2xl bg-[#140f1e] border-2 border-pink-950/60 hover:border-pink-500/40 text-slate-300 font-bold text-xs flex flex-col items-center gap-1.5 transition">
+                  <span class="text-xl">Ⓜ️</span>
+                  <span>Motorola</span>
+                </button>
+                <button type="button" onclick="selectBrand('Otro')" id="brand-btn-Otro" class="brand-opt p-3 rounded-2xl bg-[#140f1e] border-2 border-pink-950/60 hover:border-pink-500/40 text-slate-300 font-bold text-xs flex flex-col items-center gap-1.5 transition col-span-2 sm:col-span-1">
+                  <span class="text-xl">✨</span>
+                  <span>Otra Marca</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Paso 2: Campo Libre para Modelo -->
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider">
+                  2. Escribe el Modelo de tu Celular:
+                </label>
+                <span class="text-[10px] text-pink-400 font-medium">Campo libre editable</span>
+              </div>
+              <div class="relative">
+                <input 
+                  type="text" 
+                  id="quote-model" 
+                  list="model-suggestions"
+                  oninput="updateQuoteCalculation()" 
+                  placeholder="Escribe tu modelo (Ej: Samsung Galaxy A03, iPhone 11, Xiaomi Note 10...)" 
+                  class="w-full bg-black/90 border border-pink-950/90 hover:border-pink-500/50 rounded-xl px-4 py-3 text-xs sm:text-sm text-white placeholder-slate-500 focus:outline-none focus:border-pink-500 font-medium transition shadow-inner">
+                <datalist id="model-suggestions">
+                  <!-- Llenado dinámicamente con sugerencias -->
+                </datalist>
+                <div class="absolute inset-y-0 right-0 flex items-center pr-3.5 text-pink-500/60 pointer-events-none">
+                  <i class="fa-solid fa-pen-to-square text-xs"></i>
+                </div>
+              </div>
+              <!-- Sugerencias rápidas con 1 clic -->
+              <div class="flex flex-wrap items-center gap-1.5 mt-2" id="model-quick-chips">
+                <!-- Chips agregados por JS -->
+              </div>
+            </div>
+
+            <!-- Paso 3: Falla / Servicio Desplegable -->
+            <div>
+              <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">
+                3. ¿Qué falla presenta tu equipo?:
+              </label>
+              <div class="relative">
+                <select id="quote-issue" onchange="updateQuoteCalculation()" class="w-full bg-black/90 border border-pink-950 rounded-xl px-4 py-3 text-xs sm:text-sm text-white focus:outline-none focus:border-pink-500 appearance-none font-medium">
+                  <option value="Pantalla Quebrada / Módulo Display" selected>💥 Pantalla Quebrada / Módulo Display (Sin imagen o vidrio roto)</option>
+                  <option value="Pin de Carga (No carga o falso contacto)">🔌 Pin de Carga (Falso contacto o no carga)</option>
+                  <option value="Batería Agotada (Se descarga rápido / hinchada)">🔋 Batería Agotada (Dura poco o inflada)</option>
+                  <option value="Táctil no responde">👆 Táctil no responde / Vidrio roto con imagen OK</option>
+                  <option value="No enciende / Posible falla de placa">⚡ No Enciende / Murió de repente</option>
+                  <option value="Cámara / Lente roto">📷 Cámara o Lente quebrado</option>
+                  <option value="Tapa trasera quebrada">🛡️ Tapa trasera rota</option>
+                </select>
+                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-pink-400">
+                  <i class="fa-solid fa-chevron-down text-xs"></i>
+                </div>
+              </div>
+            </div>
+
+            <!-- Comentario adicional opcional -->
+            <div>
+              <label class="block text-[11px] font-semibold text-slate-400 mb-1">
+                Comentario adicional o detalle (Opcional):
+              </label>
+              <input type="text" id="quote-notes" placeholder="Ej: Color negro / Se cayó al agua / Necesito urgente..." class="w-full bg-black/80 border border-pink-950/80 rounded-xl px-3.5 py-2 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-pink-500">
+            </div>
+
+          </div>
+
+          <!-- Lado Derecho: Tarjeta de Presupuesto Estimado & Botón WhatsApp -->
+          <div class="lg:col-span-5">
+            <div class="bg-black/85 border border-pink-900/50 rounded-2xl p-6 sm:p-7 shadow-xl space-y-5 text-center relative overflow-hidden">
+              <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-pink-500/10 text-pink-400 text-xs font-bold border border-pink-500/20">
+                <i class="fa-solid fa-shield-halved"></i> Presupuesto Estimado
+              </div>
+
+              <div>
+                <p class="text-xs text-slate-400" id="quote-summary-title">Samsung Galaxy A03 / A03s</p>
+                <div class="text-3xl sm:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-rose-300 to-pink-500 font-heading mt-1" id="quote-estimated-price">
+                  Desde 230.000 Gs.
+                </div>
+                <span class="block text-[11px] text-slate-500 mt-1">Incluye repuesto de alta calidad y colocación en laboratorio</span>
+              </div>
+
+              <!-- Garantía & Diagnóstico -->
+              <div class="bg-[#120e1a] rounded-xl p-3 border border-pink-950/60 text-left space-y-1.5 text-[11px]">
+                <div class="flex items-center gap-2 text-slate-300">
+                  <i class="fa-solid fa-check text-pink-400"></i>
+                  <span>Garantía escrita en el repuesto</span>
+                </div>
+                <div class="flex items-center gap-2 text-slate-300">
+                  <i class="fa-solid fa-check text-pink-400"></i>
+                  <span>Reparación en el día (según stock)</span>
+                </div>
+                <div class="flex items-center gap-2 text-slate-300">
+                  <i class="fa-solid fa-check text-pink-400"></i>
+                  <span>Laboratorio en Lopez de Vega c/ Carlos M. Gimenez</span>
+                </div>
+              </div>
+
+              <!-- Botón de WhatsApp -->
+              <button onclick="sendCotizadorToWhatsApp()" class="w-full py-3.5 px-4 bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-bold rounded-xl text-sm flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/25 transition transform hover:-translate-y-0.5">
+                <i class="fa-brands fa-whatsapp text-xl"></i>
+                <span>Confirmar turno por WhatsApp</span>
+              </button>
+              <span class="block text-[10px] text-slate-500">Respuesta inmediata al 0983 236 508</span>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- SECCIÓN: ANTES Y DESPUÉS (SLIDER INTERACTIVO) -->
+  <!-- ========================================== -->
+  <section id="trabajos" class="py-20 relative bg-[#07070a] border-t border-b border-pink-950/40">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-2xl mx-auto mb-10">
+        <div class="inline-flex items-center gap-2 bg-pink-500/10 border border-pink-500/30 px-3 py-1 rounded-full text-xs font-bold text-pink-400 mb-2 shadow-inner">
+          <i class="fa-solid fa-arrows-left-right"></i> Visor Comparativo Interactivo
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-heading font-extrabold text-white">Nuestros Trabajos: Antes y Después</h2>
+        <p class="text-slate-400 text-sm mt-2">
+          Mueve la barra central para comparar el estado en que recibimos los teléfonos destrozados y cómo salen impecables de nuestro laboratorio.
+        </p>
+      </div>
+
+      <!-- Pestañas de Selección de Trabajo -->
+      <div class="flex flex-wrap justify-center gap-3 mb-8">
+        <button type="button" onclick="switchCase('pantalla')" id="tab-case-pantalla" class="case-tab px-5 py-2.5 rounded-xl font-bold text-xs bg-pink-600 text-white shadow-lg shadow-pink-600/30 border border-pink-500 flex items-center gap-2 transition">
+          <i class="fa-solid fa-mobile-screen"></i>
+          <span>1. Cambio de Pantalla Rota</span>
+        </button>
+        <button type="button" onclick="switchCase('microsoldadura')" id="tab-case-microsoldadura" class="case-tab px-5 py-2.5 rounded-xl font-bold text-xs bg-[#140f1e] hover:bg-[#1d1628] text-slate-300 border border-pink-950/70 hover:border-pink-500/40 flex items-center gap-2 transition">
+          <i class="fa-solid fa-microscope text-pink-400"></i>
+          <span>2. Microsoldadura en Placa</span>
+        </button>
+      </div>
+
+      <!-- Contenedor del Slider Comparador -->
+      <div class="max-w-4xl mx-auto">
+        <div id="ba-slider-container" class="relative w-full aspect-[16/10] sm:aspect-[16/9] max-h-[480px] rounded-3xl overflow-hidden select-none border-2 border-pink-500/50 shadow-2xl shadow-pink-500/10 bg-black">
+          
+          <!-- IMAGEN DESPUÉS (Fondo completo - IMPECABLE) -->
+          <img id="ba-after-img" src="img/despues1.jpg" class="absolute inset-0 w-full h-full object-cover" alt="Después de la reparación">
+          
+          <div class="absolute top-4 right-4 z-10 bg-emerald-500/90 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-xl backdrop-blur-md flex items-center gap-1.5 border border-emerald-400/30">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>DESPUÉS (Impecable)</span>
+          </div>
+
+          <!-- IMAGEN ANTES (Overlay recortada con clip-path - DESTROZADO) -->
+          <div id="ba-before-container" class="absolute inset-0 w-full h-full" style="clip-path: inset(0 50% 0 0);">
+            <img id="ba-before-img" src="img/antes1.jpg" class="w-full h-full object-cover" alt="Antes de la reparación">
+            
+            <div class="absolute top-4 left-4 z-10 bg-rose-600/90 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-xl backdrop-blur-md flex items-center gap-1.5 border border-rose-400/30">
+              <i class="fa-solid fa-triangle-exclamation"></i>
+              <span>ANTES (Destrozado)</span>
+            </div>
+          </div>
+
+          <!-- LÍNEA DIVISORIA Y BOTÓN DESLIZANTE -->
+          <div id="ba-handle-line" class="absolute top-0 bottom-0 pointer-events-none z-20 flex items-center justify-center" style="left: 50%; transform: translateX(-50%);">
+            <div class="w-1 h-full bg-white shadow-[0_0_15px_#ff007f]"></div>
+            <div class="absolute w-12 h-12 rounded-full bg-gradient-to-r from-pink-500 to-rose-600 border-2 border-white flex items-center justify-center text-white shadow-[0_0_25px_#ff007f]">
+              <i class="fa-solid fa-arrows-left-right text-base animate-pulse"></i>
+            </div>
+          </div>
+
+          <!-- CONTROL INPUT TRANSPARENTE SOBRE TODO EL VISOR -->
+          <input type="range" min="0" max="100" value="50" id="ba-range" oninput="moveComparisonSlider(this.value)" class="absolute inset-0 w-full h-full opacity-0 cursor-ew-resize z-30" aria-label="Desliza para comparar antes y después">
+          
+        </div>
+
+        <!-- Indicador de uso y detalles del trabajo actual -->
+        <div class="mt-4 p-4 rounded-2xl bg-[#0e0c16] border border-pink-950 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div class="text-center sm:text-left">
+            <h4 id="ba-case-title" class="text-sm font-bold text-white flex items-center gap-2 justify-center sm:justify-start">
+              <i class="fa-solid fa-mobile-screen text-pink-400"></i> Cambio de Módulo Display (Samsung / iPhone)
+            </h4>
+            <p id="ba-case-desc" class="text-xs text-slate-400 mt-0.5">
+              Reemplazo completo de cristal estallado y display sin imagen por pantalla nueva con calibración de táctil y garantía.
+            </p>
+          </div>
+          <div class="flex items-center gap-2 flex-shrink-0">
+            <span class="text-[11px] text-pink-400/80 font-medium hidden sm:inline">👈 Desliza la barra 👉</span>
+            <a href="https://wa.me/595983236508?text=Hola%20CF%20Cell!%20Vi%20sus%20trabajos%20de%20antes%20y%20despu%C3%A9s%20y%20quiero%20consultar%20por%20una%20reparaci%C3%B3n" target="_blank" class="px-4 py-2 bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-bold text-xs rounded-xl shadow-md transition flex items-center gap-1.5">
+              <i class="fa-brands fa-whatsapp text-base"></i> Cotizar mi equipo
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SERVICIOS TÉCNICOS -->
+  <section id="servicios" class="py-20 bg-[#0a0812] border-t border-b border-pink-950/40 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-pink-400 font-semibold text-xs tracking-wider uppercase">Nuestro Laboratorio</span>
+        <h2 class="text-3xl sm:text-4xl font-heading font-extrabold text-white mt-2">Servicios Técnicos Especializados</h2>
+        <p class="text-slate-400 text-sm sm:text-base mt-3">
+          Contamos con instrumental de laboratorio, estación de soldado y repuestos de alta calidad en Lopez de Vega c/ Carlos M. Gimenez.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <!-- Celulares -->
+        <div class="bg-[#0f0f16] border border-pink-950/50 hover:border-pink-500/50 rounded-2xl p-6 transition duration-300 group hover:-translate-y-1 shadow-lg">
+          <div class="w-14 h-14 rounded-xl bg-pink-500/10 text-pink-400 flex items-center justify-center text-2xl mb-5 group-hover:bg-pink-600 group-hover:text-white transition">
+            <i class="fa-solid fa-mobile-screen"></i>
+          </div>
+          <h3 class="font-heading font-bold text-xl text-white mb-2">Celulares y Tablets</h3>
+          <p class="text-xs text-slate-400 mb-4">Reparamos todas las marcas y modelos: iPhone, Samsung, Motorola, Xiaomi y más.</p>
+          <ul class="text-xs text-slate-300 space-y-2 mb-6">
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-pink-400"></i> Cambio de módulos y displays</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-pink-400"></i> Cambio de baterías y flex</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-pink-400"></i> Pines de carga Tipo-C y Micro</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-pink-400"></i> Microelectrónica y placas</li>
+          </ul>
+          <button onclick="quickQuote('Reparación de Celular')" class="w-full text-center py-2 px-3 bg-[#181422] hover:bg-pink-600 text-white rounded-lg text-xs font-semibold transition">Consultar por Celular</button>
+        </div>
+
+        <!-- Notebooks & PC -->
+        <div class="bg-[#0f0f16] border border-pink-950/50 hover:border-pink-500/50 rounded-2xl p-6 transition duration-300 group hover:-translate-y-1 shadow-lg">
+          <div class="w-14 h-14 rounded-xl bg-pink-500/10 text-pink-400 flex items-center justify-center text-2xl mb-5 group-hover:bg-pink-600 group-hover:text-white transition">
+            <i class="fa-solid fa-laptop"></i>
+          </div>
+          <h3 class="font-heading font-bold text-xl text-white mb-2">Notebooks & Informática</h3>
+          <p class="text-xs text-slate-400 mb-4">Mantenimiento preventivo, correctivo y repuestos para equipos portátiles y de escritorio.</p>
+          <ul class="text-xs text-slate-300 space-y-2 mb-6">
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-pink-400"></i> Cargadores originales y universales</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-pink-400"></i> Cambio de pantallas, teclados y bisagras</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-pink-400"></i> Reparación de placa madre y chips</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-pink-400"></i> Actualización de SSD y Memoria RAM</li>
+          </ul>
+          <button onclick="quickQuote('Reparación de Notebook / PC')" class="w-full text-center py-2 px-3 bg-[#181422] hover:bg-pink-600 text-white rounded-lg text-xs font-semibold transition">Consultar por Notebook</button>
+        </div>
+
+        <!-- Televisores -->
+        <div class="bg-[#0f0f16] border border-pink-950/50 hover:border-pink-500/50 rounded-2xl p-6 transition duration-300 group hover:-translate-y-1 shadow-lg">
+          <div class="w-14 h-14 rounded-xl bg-pink-500/10 text-pink-400 flex items-center justify-center text-2xl mb-5 group-hover:bg-pink-600 group-hover:text-white transition">
+            <i class="fa-solid fa-tv"></i>
+          </div>
+          <h3 class="font-heading font-bold text-xl text-white mb-2">Televisores & Smart TV</h3>
+          <p class="text-xs text-slate-400 mb-4">Laboratorio especializado en TVs LED, OLED y Smart TV de todas las marcas.</p>
+          <ul class="text-xs text-slate-300 space-y-2 mb-6">
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-pink-400"></i> Cambio de tiras LED (pantalla oscura)</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-pink-400"></i> Reparación de fuente de alimentación</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-pink-400"></i> Placa Main / Tarjeta lógica</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-pink-400"></i> Falla de imagen, firmware y puertos HDMI</li>
+          </ul>
+          <button onclick="quickQuote('Reparación de Smart TV')" class="w-full text-center py-2 px-3 bg-[#181422] hover:bg-pink-600 text-white rounded-lg text-xs font-semibold transition">Consultar por TV</button>
+        </div>
+
+        <!-- CCTV & Seguridad -->
+        <div class="bg-[#0f0f16] border border-pink-950/50 hover:border-pink-500/50 rounded-2xl p-6 transition duration-300 group hover:-translate-y-1 shadow-lg">
+          <div class="w-14 h-14 rounded-xl bg-pink-500/10 text-pink-400 flex items-center justify-center text-2xl mb-5 group-hover:bg-pink-600 group-hover:text-white transition">
+            <i class="fa-solid fa-shield-halved"></i>
+          </div>
+          <h3 class="font-heading font-bold text-xl text-white mb-2">Cámaras CCTV & Seguridad</h3>
+          <p class="text-xs text-slate-400 mb-4">Equipamiento, instalación, reparación y configuración de circuitos cerrados.</p>
+          <ul class="text-xs text-slate-300 space-y-2 mb-6">
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-pink-400"></i> Reparación y venta de DVR / NVR</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-pink-400"></i> Cámaras domo, tubo e IP Wi-Fi</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-pink-400"></i> Fuentes de poder de 12V e individuales</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-pink-400"></i> Configuración remota para celulares</li>
+          </ul>
+          <button onclick="quickQuote('Soporte / Equipos CCTV')" class="w-full text-center py-2 px-3 bg-[#181422] hover:bg-pink-600 text-white rounded-lg text-xs font-semibold transition">Consultar por CCTV</button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CATÁLOGO DINÁMICO DE PRODUCTOS (MODIFICABLE) -->
+  <section id="catalogo" class="py-20 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Catalog Header & Control Bar -->
+      <div class="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-6 mb-10">
+        <div>
+          <div class="inline-flex items-center gap-2 text-pink-400 font-semibold text-xs tracking-wider uppercase mb-1">
+            <i class="fa-solid fa-tags"></i> Inventario & Repuestos
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-heading font-extrabold text-white">Catálogo de Productos CF Cell</h2>
+          <p class="text-slate-400 text-sm mt-1">Cargadores de notebooks, repuestos, artículos informáticos y accesorios.</p>
+        </div>
+
+        <!-- Controls: Wholesale Switch + Add Product (Admin) -->
+        <div class="flex flex-wrap items-center gap-3 w-full lg:w-auto">
+          <!-- Switch Precio Minorista / Mayorista -->
+          <div class="bg-[#120f18] border border-pink-900/40 p-1 rounded-xl flex items-center shadow-inner">
+            <button id="view-retail-btn" onclick="setPriceView('retail')" class="px-3.5 py-1.5 text-xs font-semibold rounded-lg bg-pink-600 text-white transition shadow">
+              <i class="fa-solid fa-user mr-1"></i> Minorista
+            </button>
+            <button id="view-wholesale-btn" onclick="setPriceView('wholesale')" class="px-3.5 py-1.5 text-xs font-semibold rounded-lg text-slate-400 hover:text-amber-400 transition">
+              <i class="fa-solid fa-boxes-stacked mr-1"></i> Mayorista
+            </button>
+          </div>
+
+          <!-- Botón Administrar Catálogo -->
+          <button onclick="openAdminModal()" class="flex items-center gap-2 bg-[#181422] hover:bg-[#231c30] text-pink-300 border border-pink-900/40 px-4 py-2 rounded-xl text-xs font-semibold transition">
+            <i class="fa-solid fa-pen-to-square text-pink-400"></i>
+            <span>Editar Catálogo</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Filters & Search Bar -->
+      <div class="bg-[#0c0a13] border border-pink-950/60 rounded-2xl p-4 mb-8 flex flex-col md:flex-row items-center justify-between gap-4">
+        <!-- Category Pills -->
+        <div class="flex flex-wrap items-center gap-2 w-full md:w-auto" id="category-pills">
+          <button onclick="filterCategory('all')" class="cat-pill active px-3.5 py-1.5 rounded-lg text-xs font-medium bg-pink-500/20 text-pink-300 border border-pink-500/40">Todos</button>
+          <button onclick="filterCategory('Cargadores Notebook')" class="cat-pill px-3.5 py-1.5 rounded-lg text-xs font-medium bg-slate-900 text-slate-400 hover:text-white border border-slate-800">Cargadores Notebook</button>
+          <button onclick="filterCategory('Informática')" class="cat-pill px-3.5 py-1.5 rounded-lg text-xs font-medium bg-slate-900 text-slate-400 hover:text-white border border-slate-800">Informática</button>
+          <button onclick="filterCategory('Repuestos')" class="cat-pill px-3.5 py-1.5 rounded-lg text-xs font-medium bg-slate-900 text-slate-400 hover:text-white border border-slate-800">Repuestos Celular</button>
+          <button onclick="filterCategory('CCTV & Seguridad')" class="cat-pill px-3.5 py-1.5 rounded-lg text-xs font-medium bg-slate-900 text-slate-400 hover:text-white border border-slate-800">CCTV & Seguridad</button>
+          <button onclick="filterCategory('Accesorios')" class="cat-pill px-3.5 py-1.5 rounded-lg text-xs font-medium bg-slate-900 text-slate-400 hover:text-white border border-slate-800">Accesorios</button>
+        </div>
+
+        <!-- Search Input -->
+        <div class="relative w-full md:w-72">
+          <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 text-xs"></i>
+          <input type="text" id="catalog-search" oninput="searchProducts(this.value)" placeholder="Buscar producto o repuesto..." class="w-full bg-black border border-pink-900/40 rounded-xl pl-9 pr-3 py-2 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-pink-500">
+        </div>
+      </div>
+
+      <!-- PRODUCT GRID -->
+      <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <!-- Rendered by app.js -->
+      </div>
+
+      <!-- Empty State -->
+      <div id="empty-state" class="hidden text-center py-16">
+        <div class="w-16 h-16 rounded-full bg-slate-900 flex items-center justify-center text-slate-500 text-2xl mx-auto mb-4">
+          <i class="fa-solid fa-box-open"></i>
+        </div>
+        <h4 class="text-white font-bold text-lg mb-1">No se encontraron productos</h4>
+        <p class="text-slate-400 text-xs">Prueba con otra palabra clave o agrega nuevos productos desde el panel administrador.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SECCIÓN MAYORISTAS -->
+  <section id="mayoristas" class="py-16 bg-gradient-to-r from-amber-500/10 via-[#0a0712] to-amber-500/5 border-t border-b border-amber-500/20 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-gradient-to-br from-[#0e0c16] to-black border border-amber-500/30 rounded-3xl p-8 sm:p-12 shadow-2xl relative overflow-hidden">
+        <div class="absolute -right-10 -bottom-10 w-72 h-72 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div class="lg:col-span-8 space-y-4">
+            <div class="inline-flex items-center gap-2 bg-amber-500/20 text-amber-300 border border-amber-500/30 px-3 py-1 rounded-full text-xs font-semibold">
+              <i class="fa-solid fa-crown"></i> Canal Especial para el Gremio y Comercios
+            </div>
+            <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-white">¿Eres técnico o tienes una tienda de computación?</h2>
+            <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+              En <strong class="text-amber-400">CF Cell</strong> impulsamos a los profesionales. Te ofrecemos <strong class="text-white">listas de precios mayoristas</strong> en repuestos de celulares, cargadores de notebooks, placas, periféricos y equipamiento CCTV con entregas coordinadas y soporte técnico entre colegas.
+            </p>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
+              <div class="bg-[#181321] p-3 rounded-xl border border-pink-950/40">
+                <i class="fa-solid fa-percent text-amber-400 text-base mb-1"></i>
+                <p class="text-xs font-bold text-white">Descuentos por Cantidad</p>
+                <p class="text-[11px] text-slate-400">Precios especiales a partir de compras mínimas accesibles.</p>
+              </div>
+              <div class="bg-[#181321] p-3 rounded-xl border border-pink-950/40">
+                <i class="fa-solid fa-truck-fast text-amber-400 text-base mb-1"></i>
+                <p class="text-xs font-bold text-white">Envíos Rápidos</p>
+                <p class="text-[11px] text-slate-400">Despachos diarios para que no demores tus entregas.</p>
+              </div>
+              <div class="bg-[#181321] p-3 rounded-xl border border-pink-950/40">
+                <i class="fa-solid fa-clipboard-check text-amber-400 text-base mb-1"></i>
+                <p class="text-xs font-bold text-white">Soporte y Garantía</p>
+                <p class="text-[11px] text-slate-400">Canal directo para cambios y resolución rápida.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="lg:col-span-4 text-center lg:text-right">
+            <div class="bg-[#13101c] border border-pink-900/40 p-6 rounded-2xl shadow-lg">
+              <p class="text-xs text-slate-400 mb-2">Solicita acceso directo a la lista de precios:</p>
+              <a id="btn-wholesale-contact" href="https://wa.me/595983236508" target="_blank" class="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-bold px-6 py-3.5 rounded-xl shadow-lg shadow-amber-500/20 transition transform hover:-translate-y-0.5 text-sm">
+                <i class="fa-brands fa-whatsapp text-lg"></i>
+                <span>Contactar por Mayor</span>
+              </a>
+              <span class="block text-[11px] text-slate-500 mt-2">WhatsApp 0983 236 508</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN UBICACIÓN & GOOGLE MAPS -->
+  <section id="ubicacion" class="py-20 relative bg-[#090710] border-t border-pink-950/40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <span class="text-pink-400 font-semibold text-xs tracking-wider uppercase">Geolocalización GPS</span>
+        <h2 class="text-3xl sm:text-4xl font-heading font-extrabold text-white mt-1">Nuestra Ubicación Exacta</h2>
+        <p class="text-slate-400 text-sm mt-2">
+          Te esperamos en <strong class="text-pink-400">Lopez de Vega c/ Carlos M. Gimenez</strong> (GPS: <span class="font-mono text-slate-300">25°20'36.5"S 57°32'20.5"W</span>) para diagnósticos, presupuestos o retiro de repuestos.
+        </p>
+      </div>
+
+      <div class="relative rounded-3xl overflow-hidden border border-pink-500/30 shadow-2xl shadow-pink-500/10 bg-[#0f0f16]">
+        <iframe 
+          title="Ubicación GPS de CF Cell"
+          src="https://maps.google.com/maps?q=-25.343472,-57.539028&t=&z=17&ie=UTF8&iwloc=&output=embed" 
+          width="100%" 
+          height="440" 
+          style="border:0;" 
+          allowfullscreen="" 
+          loading="lazy" 
+          class="w-full">
+        </iframe>
+        
+        <!-- Overlay Card Flotante en el Mapa -->
+        <div class="absolute bottom-4 left-4 right-4 sm:right-auto sm:max-w-md bg-black/90 backdrop-blur-md border border-pink-500/30 p-4 rounded-2xl shadow-2xl flex items-center justify-between gap-4">
+          <div>
+            <h4 class="text-white font-bold text-sm flex items-center gap-1.5">
+              <i class="fa-solid fa-location-dot text-pink-400"></i> CF CELL
+            </h4>
+            <p class="text-xs text-slate-300">Lopez de Vega c/ Carlos M. Gimenez</p>
+            <p class="text-[10px] text-pink-400/90 font-mono">📍 25°20'36.5"S 57°32'20.5"W</p>
+            <span class="text-[11px] text-slate-400 font-medium">Lun a Sáb: 08:00 a 18:30 hs</span>
+          </div>
+          <a href="https://maps.google.com/?q=-25.343472,-57.539028" target="_blank" class="px-3.5 py-2.5 bg-gradient-to-r from-pink-500 to-rose-600 hover:from-pink-600 hover:to-rose-700 text-white font-bold text-xs rounded-xl shadow-md transition flex items-center gap-1.5 flex-shrink-0">
+            <i class="fa-solid fa-diamond-turn-right"></i> Cómo llegar
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN CONTACTO -->
+  <section id="contacto" class="py-20 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+        
+        <div class="lg:col-span-5 space-y-6">
+          <div>
+            <span class="text-pink-400 font-semibold text-xs tracking-wider uppercase">Atención y Consultas</span>
+            <h2 class="text-3xl font-heading font-extrabold text-white mt-1">Visítanos o Escríbenos</h2>
+            <p class="text-slate-400 text-sm mt-2">
+              Estamos a tu disposición para diagnósticos, presupuestos o asesoramiento sobre repuestos y equipos informáticos.
+            </p>
+          </div>
+
+          <div class="space-y-4">
+            <div class="flex items-start gap-4 p-4 rounded-xl bg-[#0f0f16] border border-pink-950/50">
+              <div class="w-10 h-10 rounded-lg bg-pink-500/10 text-pink-400 flex items-center justify-center text-lg flex-shrink-0">
+                <i class="fa-solid fa-location-dot"></i>
+              </div>
+              <div>
+                <h4 class="text-sm font-semibold text-white">Dirección & Coordenadas</h4>
+                <p id="contact-address" class="text-xs text-slate-400">Lopez de Vega c/ Carlos M. Gimenez</p>
+                <span class="text-[10px] text-pink-400 font-mono">GPS: 25°20'36.5"S 57°32'20.5"W</span>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4 p-4 rounded-xl bg-[#0f0f16] border border-pink-950/50">
+              <div class="w-10 h-10 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-lg flex-shrink-0">
+                <i class="fa-brands fa-whatsapp"></i>
+              </div>
+              <div>
+                <h4 class="text-sm font-semibold text-white">WhatsApp & Teléfono</h4>
+                <p id="contact-phone" class="text-xs text-white font-mono font-bold">0983 236 508</p>
+                <a href="https://wa.me/595983236508" target="_blank" class="text-[11px] text-pink-400 hover:underline">Hacer clic para chatear</a>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4 p-4 rounded-xl bg-[#0f0f16] border border-pink-950/50">
+              <div class="w-10 h-10 rounded-lg bg-pink-500/10 text-pink-400 flex items-center justify-center text-lg flex-shrink-0">
+                <i class="fa-solid fa-clock"></i>
+              </div>
+              <div>
+                <h4 class="text-sm font-semibold text-white">Horarios de Atención</h4>
+                <p id="contact-hours" class="text-xs text-slate-400">Lunes a Sábado: 08:00 a 18:30 hs</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- FORMULARIO DE MENSAJE RÁPIDO A WHATSAPP -->
+        <div class="lg:col-span-7">
+          <div class="bg-[#0f0f16] border border-pink-950/50 rounded-2xl p-6 sm:p-8 shadow-xl">
+            <h3 class="text-xl font-heading font-bold text-white mb-2">Enviar consulta directa</h3>
+            <p class="text-xs text-slate-400 mb-6">Completa los datos y se abrirá tu WhatsApp con el mensaje estructurado para nuestro número <strong>0983 236 508</strong>:</p>
+
+            <form onsubmit="handleContactForm(event)" class="space-y-4">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs font-medium text-slate-300 mb-1">Tu Nombre</label>
+                  <input type="text" id="form-name" required placeholder="Ej: César" class="w-full bg-black border border-pink-950/60 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-pink-500">
+                </div>
+                <div>
+                  <label class="block text-xs font-medium text-slate-300 mb-1">Tipo de Consulta</label>
+                  <select id="form-type" class="w-full bg-black border border-pink-950/60 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-pink-500">
+                    <option value="Servicio Técnico">Reparación / Servicio Técnico</option>
+                    <option value="Cargadores Notebook">Cargadores de Notebooks</option>
+                    <option value="Compra Minorista">Compra de Repuesto o Producto</option>
+                    <option value="Consulta Mayorista">Lista de Precios Mayorista</option>
+                    <option value="Instalación CCTV">Presupuesto CCTV / Seguridad</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-xs font-medium text-slate-300 mb-1">Equipo / Modelo / Producto</label>
+                <input type="text" id="form-model" required placeholder="Ej: Notebook Dell / Celular Samsung A52 / Smart TV LG" class="w-full bg-black border border-pink-950/60 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-pink-500">
+              </div>
+
+              <div>
+                <label class="block text-xs font-medium text-slate-300 mb-1">Detalle de la falla o lo que buscas</label>
+                <textarea id="form-message" rows="3" required placeholder="Ej: No enciende la pantalla / Busco cargador de 65W original / Cotización de 4 cámaras..." class="w-full bg-black border border-pink-950/60 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-pink-500"></textarea>
+              </div>
+
+              <button type="submit" class="w-full py-3.5 px-4 bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-semibold rounded-xl text-sm flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/20 transition">
+                <i class="fa-brands fa-whatsapp text-lg"></i>
+                <span>Enviar consulta al 0983 236 508</span>
+              </button>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-black border-t border-pink-950/60 text-slate-400 py-12 text-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-pink-500 to-rose-600 flex items-center justify-center text-white">
+            <i class="fa-solid fa-microchip"></i>
+          </div>
+          <span class="font-heading font-bold text-white text-base">CF CELL</span>
+          <span class="text-pink-950">|</span>
+          <span>Lopez de Vega c/ Carlos M. Gimenez</span>
+        </div>
+
+        <div class="flex items-center space-x-6">
+          <a href="#inicio" class="hover:text-pink-400 transition">Inicio</a>
+          <a href="#servicios" class="hover:text-pink-400 transition">Servicios</a>
+          <a href="#catalogo" class="hover:text-pink-400 transition">Catálogo</a>
+          <a href="#ubicacion" class="hover:text-pink-400 transition">Ubicación</a>
+          <button onclick="openAdminModal()" class="text-pink-400 hover:underline">Panel Admin</button>
+        </div>
+
+        <p class="text-slate-600">&copy; <span id="year"></span> CF Cell. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- BOTÓN FLOTANTE DE WHATSAPP -->
+  <a id="btn-floating-whatsapp" href="https://wa.me/595983236508" target="_blank" class="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-emerald-500 hover:bg-emerald-600 text-white flex items-center justify-center text-3xl shadow-xl shadow-emerald-500/30 transition transform hover:scale-110" title="Contactar por WhatsApp">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+
+  <!-- ========================================== -->
+  <!-- MODAL: PANEL ADMINISTRADOR DEL CATÁLOGO    -->
+  <!-- ========================================== -->
+  <div id="admin-modal" class="fixed inset-0 z-50 hidden bg-black/85 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
+    <div class="bg-[#0f0f16] border border-pink-900/40 rounded-2xl w-full max-w-4xl max-h-[90vh] overflow-hidden flex flex-col shadow-2xl">
+      
+      <!-- Modal Header -->
+      <div class="px-6 py-4 border-b border-pink-950 flex items-center justify-between bg-black">
+        <div class="flex items-center gap-2">
+          <div class="w-8 h-8 rounded-lg bg-pink-500/10 text-pink-400 flex items-center justify-center text-sm border border-pink-500/20">
+            <i class="fa-solid fa-sliders"></i>
+          </div>
+          <div>
+            <h3 class="font-heading font-bold text-white text-base">Panel de Gestión de CF Cell</h3>
+            <p class="text-[11px] text-slate-400">Modifica productos, precios minoristas/mayoristas y datos de contacto</p>
+          </div>
+        </div>
+        <button onclick="closeAdminModal()" class="text-slate-400 hover:text-white p-2 text-lg">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <!-- Modal Tabs -->
+      <div class="flex border-b border-pink-950 bg-[#0c0a13] px-6 pt-2">
+        <button onclick="switchAdminTab('tab-products')" id="btn-tab-products" class="px-4 py-2 text-xs font-semibold border-b-2 border-pink-500 text-pink-400">
+          <i class="fa-solid fa-boxes-stacked mr-1"></i> Productos y Precios
+        </button>
+        <button onclick="switchAdminTab('tab-settings')" id="btn-tab-settings" class="px-4 py-2 text-xs font-semibold border-b-2 border-transparent text-slate-400 hover:text-slate-200">
+          <i class="fa-solid fa-gear mr-1"></i> Configuración (WhatsApp y Datos)
+        </button>
+      </div>
+
+      <!-- Modal Body -->
+      <div class="p-6 overflow-y-auto flex-1 space-y-6">
+        
+        <!-- TAB 1: PRODUCTOS -->
+        <div id="tab-products" class="space-y-6">
+          <div class="bg-black/60 border border-pink-950/60 p-4 rounded-xl">
+            <h4 id="admin-form-title" class="text-sm font-bold text-white mb-3 flex items-center gap-2">
+              <i class="fa-solid fa-plus-circle text-pink-400"></i> Agregar Nuevo Producto
+            </h4>
+
+            <form id="product-form" onsubmit="handleProductSubmit(event)" class="space-y-4">
+              <input type="hidden" id="prod-id">
+
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                <div class="md:col-span-2">
+                  <label class="block text-[11px] font-medium text-slate-400 mb-1">Nombre del Producto / Repuesto</label>
+                  <input type="text" id="prod-title" required placeholder="Ej: Cargador Notebook Lenovo 65W Punta Amarilla" class="w-full bg-[#161220] border border-pink-950 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-pink-500">
+                </div>
+                <div>
+                  <label class="block text-[11px] font-medium text-slate-400 mb-1">Categoría</label>
+                  <select id="prod-category" class="w-full bg-[#161220] border border-pink-950 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-pink-500">
+                    <option value="Cargadores Notebook">Cargadores Notebook</option>
+                    <option value="Informática">Informática</option>
+                    <option value="Repuestos">Repuestos Celular</option>
+                    <option value="CCTV & Seguridad">CCTV & Seguridad</option>
+                    <option value="Accesorios">Accesorios</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <div>
+                  <label class="block text-[11px] font-medium text-slate-400 mb-1">Precio Minorista</label>
+                  <input type="number" id="prod-retail-price" required placeholder="Ej: 150000" class="w-full bg-[#161220] border border-pink-950 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-pink-500">
+                </div>
+                <div>
+                  <label class="block text-[11px] font-medium text-slate-400 mb-1">Precio Mayorista</label>
+                  <input type="number" id="prod-wholesale-price" required placeholder="Ej: 110000" class="w-full bg-[#161220] border border-pink-950 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-pink-500">
+                </div>
+                <div>
+                  <label class="block text-[11px] font-medium text-slate-400 mb-1">Estado de Stock</label>
+                  <select id="prod-stock" class="w-full bg-[#161220] border border-pink-950 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-pink-500">
+                    <option value="true">Disponible en Stock</option>
+                    <option value="false">Consultar Disponibilidad</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                <div class="md:col-span-2">
+                  <label class="block text-[11px] font-medium text-slate-400 mb-1">URL de Imagen (Opcional)</label>
+                  <input type="text" id="prod-image" placeholder="https://ejemplo.com/foto.jpg" class="w-full bg-[#161220] border border-pink-950 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-pink-500">
+                </div>
+                <div>
+                  <label class="block text-[11px] font-medium text-slate-400 mb-1">Acción</label>
+                  <div class="flex gap-2">
+                    <button type="submit" id="prod-submit-btn" class="flex-1 py-2 px-3 bg-pink-600 hover:bg-pink-500 text-white font-semibold rounded-lg text-xs transition">
+                      Guardar Producto
+                    </button>
+                    <button type="button" onclick="cancelProductEdit()" id="prod-cancel-btn" class="hidden py-2 px-3 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-lg text-xs transition">
+                      Cancelar
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-[11px] font-medium text-slate-400 mb-1">Descripción Breve o Especificación Técnica</label>
+                <input type="text" id="prod-desc" placeholder="Ej: Voltaje 20V 3.25A con cable de poder y garantía" class="w-full bg-[#161220] border border-pink-950 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-pink-500">
+              </div>
+            </form>
+          </div>
+
+          <!-- Tabla de productos existentes -->
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <h4 class="text-xs font-bold text-white uppercase tracking-wider">Productos en tu Catálogo (<span id="admin-prod-count">0</span>)</h4>
+              <div class="flex items-center gap-2">
+                <button onclick="exportCatalogJSON()" class="px-2.5 py-1 text-xs bg-[#181422] hover:bg-[#231c30] text-pink-300 rounded border border-pink-900/40 flex items-center gap-1">
+                  <i class="fa-solid fa-file-export"></i> Descargar Copia
+                </button>
+                <label class="cursor-pointer px-2.5 py-1 text-xs bg-[#181422] hover:bg-[#231c30] text-pink-300 rounded border border-pink-900/40 flex items-center gap-1">
+                  <i class="fa-solid fa-file-import"></i> Cargar Copia
+                  <input type="file" id="import-json-file" accept=".json" onchange="importCatalogJSON(event)" class="hidden">
+                </label>
+                <button onclick="resetToDefaultCatalog()" class="px-2.5 py-1 text-xs bg-rose-950/40 hover:bg-rose-900/60 text-rose-300 rounded border border-rose-800/40">
+                  Restablecer
+                </button>
+              </div>
+            </div>
+
+            <div class="border border-pink-950/60 rounded-xl overflow-hidden max-h-80 overflow-y-auto">
+              <table class="w-full text-left text-xs">
+                <thead class="bg-black text-slate-400 uppercase text-[10px] sticky top-0">
+                  <tr>
+                    <th class="p-3">Producto</th>
+                    <th class="p-3">Categoría</th>
+                    <th class="p-3">P. Minorista</th>
+                    <th class="p-3">P. Mayorista</th>
+                    <th class="p-3 text-right">Acciones</th>
+                  </tr>
+                </thead>
+                <tbody id="admin-product-table-body" class="divide-y divide-pink-950/40">
+                  <!-- Rendered dynamically -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 2: CONFIGURACIÓN GENERAL (WHATSAPP, DIRECCIÓN) -->
+        <div id="tab-settings" class="hidden space-y-5">
+          <div class="bg-black/60 border border-pink-950/60 p-5 rounded-xl space-y-4">
+            <h4 class="text-sm font-bold text-white flex items-center gap-2">
+              <i class="fa-brands fa-whatsapp text-emerald-400"></i> Número de WhatsApp
+            </h4>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-[11px] font-semibold text-slate-400 mb-1">Enlace wa.me (con prefijo de país 595)</label>
+                <input type="text" id="setting-whatsapp" placeholder="595983236508" class="w-full bg-[#161220] border border-pink-950 rounded-lg px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-pink-500 font-mono">
+              </div>
+              <div>
+                <label class="block text-[11px] font-semibold text-slate-400 mb-1">Teléfono visible en pantalla</label>
+                <input type="text" id="setting-display-phone" placeholder="0983 236 508" class="w-full bg-[#161220] border border-pink-950 rounded-lg px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-pink-500 font-mono">
+              </div>
+            </div>
+
+            <div class="pt-4 border-t border-pink-950/60">
+              <label class="block text-xs font-medium text-slate-300 mb-1">Dirección visible</label>
+              <input type="text" id="setting-address" placeholder="Lopez de Vega c/ Carlos M. Gimenez" class="w-full max-w-md bg-[#161220] border border-pink-950 rounded-lg px-3.5 py-2 text-xs text-white focus:outline-none focus:border-pink-500">
+            </div>
+
+            <div>
+              <label class="block text-xs font-medium text-slate-300 mb-1">Horarios de Atención</label>
+              <input type="text" id="setting-hours" placeholder="Lun a Sáb: 08:00 a 18:30 hs" class="w-full max-w-md bg-[#161220] border border-pink-950 rounded-lg px-3.5 py-2 text-xs text-white focus:outline-none focus:border-pink-500">
+            </div>
+
+            <div>
+              <label class="block text-xs font-medium text-slate-300 mb-1">Símbolo de Moneda</label>
+              <input type="text" id="setting-currency" placeholder="Gs. o $" class="w-32 bg-[#161220] border border-pink-950 rounded-lg px-3.5 py-2 text-xs text-white focus:outline-none focus:border-pink-500">
+            </div>
+
+            <div class="pt-2">
+              <button onclick="saveGeneralSettings()" class="py-2.5 px-5 bg-pink-600 hover:bg-pink-500 text-white font-semibold rounded-lg text-xs transition">
+                Guardar Configuración
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="px-6 py-3 bg-black border-t border-pink-950 flex justify-between items-center text-xs">
+        <span class="text-slate-500">Los cambios se guardan automáticamente en tu navegador.</span>
+        <button onclick="closeAdminModal()" class="px-4 py-2 bg-slate-900 hover:bg-slate-800 text-slate-300 rounded-lg transition">
+          Cerrar
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SCRIPT -->
+  <script src="app.js"></script>
+</body>
+</html>
